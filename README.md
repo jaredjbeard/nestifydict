@@ -18,6 +18,6 @@ If you are using this in your work, please cite as
     year = {2022},
     publisher = {GitHub},
     journal = {GitHub repository},
-    howpublished = {\url{https://pypi.org/project/nestifydict/}},
+    howpublished = {\url{https://github.com/jaredjbeard/nestifydict}},
 }
 ```
