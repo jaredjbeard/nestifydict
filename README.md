@@ -1,9 +1,9 @@
 # nestifydict
 A tool for parsing structured data in the form of dictionaries
 
-Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/)
-
-And install from [PyPi](https://pypi.org/project/nestifydict/)
+Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/), 
+[Github source code](https://github.com/jaredjbeard/nestifydict), 
+and install from [PyPi](https://pypi.org/project/nestifydict/)
 
 Please note, I am still testing, this. I deployed a bit early, so apologies for any bugs. They should be gone in a few days before the start of 2023.
 

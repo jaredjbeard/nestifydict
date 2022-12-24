@@ -1,5 +1,6 @@
 build/*
 __pycache__/
 nestifydict.egg-info/
+nestifydict_jaredjbeard.egg-info/
 dist/
 .pypirc

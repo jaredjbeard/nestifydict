@@ -93,17 +93,27 @@ def find_key(d : dict, key):
         return [key]
     return None
     
-def recursive_set(d : dict, key, val):
+def recursive_set(d : dict, key : list, val, as_hint = False):
     """
-    Updates dictionary value given an ordered list of keys
+    Updates dictionary value given an ordered list of keys.
+    Can also support keys as hints and will search for the *first* key before attempting to set it.
+    (Later may update find_key to match a list of keys or make a find_key_list function)
+    In either case, if key is not found it will be added to root
     
     :param d: (dict) dictionary to update
-    :param key: () key
+    :param key: (list) list of keys
     :param val: () value
+    :param as_hint: (bool) if true, attempts to find key before setting it, *default*: False
     """
-    if len(key) > 1:
-        if key[0] not in d or isinstance(d[key[0]], dict):
-            d[key[0]] = {}
-        recursive_set(d[key[0]], key[1:len(key)], val)
+    if as_hint and key[0] not in d:
+        temp_key = find_key(d, key[0])
+        if not isinstance(temp_key, None):
+            key = temp_key + key[1:len(key)]
+        recursive_set(d,key,val)
     else:
-        d[key[0]] = val
+        if len(key) > 1:
+            if key[0] not in d or (not isinstance(d[key[0]], dict)):
+                d[key[0]] = {}
+            recursive_set(d[key[0]], key[1:len(key)], val)
+        else:
+            d[key[0]] = val
