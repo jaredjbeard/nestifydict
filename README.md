@@ -5,6 +5,8 @@ Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/)
 
 And install from [PyPi](https://pypi.org/project/nestifydict/)
 
+Please note, I am still testing, this. I deployed a bit early, so apologies for any bugs. They should be gone in a few days before the start of 2023.
+
 Citation
 --------
 If you are using this in your work, please cite as

@@ -13,7 +13,7 @@ sys.path.append(parent)
 
 from copy import deepcopy
 
-__all__ = ["merge", "unstructure","structure"]
+__all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set"]
 
 def merge(d_default : dict, d_merge : dict):
     """
