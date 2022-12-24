@@ -9,4 +9,4 @@ scenarios where you may want to parse dictionary based configuration files.
 Install
 *******
 
-Please install from `PyPi <>`_.
+Please install from `PyPi <https://pypi.org/project/nestifydict/>`_.
