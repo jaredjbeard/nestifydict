@@ -1,9 +1,9 @@
 Introduction
 ============
 
-``NestifyDict`` is intended to help with manipulating nested dicts.
-As opposed to other methods, we generally assume a structure, so this is useful in 
-scenarios where you may want to parse dictionary based configuration files.
+``NestifyDict`` is a tool for parsing structured data (primarily nested dictionaries from json files). 
+In particular it can flatten dictionaries, map flattened dicts to a template, and recursively get/set elements in nested dictionaries without a priori knowledge of the structure.
+As opposed to other methods, we generally assume a fixed unknown structure exists.
 
 
 Install

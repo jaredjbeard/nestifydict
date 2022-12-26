@@ -1,5 +1,5 @@
 """
-This module contains functions for restructuring and extracting information from nested dictionaries
+A tool for parsing structured data (primarily nested dictionaries from json files). In particular it can flatten dictionaries, map flattened dicts to a template, and recursively get/set elements in nested dictionaries without a priori knowledge of the structure.
 """
 __license__ = "BSD-3"
 __docformat__ = 'reStructuredText'
@@ -27,10 +27,9 @@ def merge(d_default : dict, d_merge : dict):
     :return: (dict) combined dictionary
     """
     d_default = deepcopy(d_default)
-
-    for key, val in d_merge:
-        if key not in d_default or (not isinstance(d_default[key], dict)):
-            d_default[key] = deepcopy(val)
+    for key in d_merge:
+        if key not in d_default or not (isinstance(d_merge[key], dict) and isinstance(d_default[key], dict)):
+            d_default[key] = deepcopy(d_merge[key])
         else:
             d_default[key] = merge(d_default[key], d_merge[key])
     return d_default
@@ -46,10 +45,10 @@ def unstructure(d):
         d_new = {}
         for key in d:
             d_temp = unstructure(d[key])
-            if isinstance(d_temp, None):
+            if None in d_temp:
                 d_temp[key] = d_temp.pop(None,d_temp[None])  
             d_new.update(d_temp)
-        return d           
+        return d_new         
     else:
         return {None: d}
         
@@ -79,16 +78,18 @@ def structure(d_flat : dict, d_structure : dict, reject_nonexistent : bool = Tru
 
 def find_key(d : dict, key):
     """
-    Finds key in nested dict
+    Finds first instance of key in nested dict
     
     :param d: (dict) dictionary to search
     :param key: () key
     :return: (list) Returns order of keys to access element or None if nonexistent
     """
-    if key not in dict:
-        for k, val in d:
+    if key not in d:
+        for k, val in d.items():
             if isinstance(val, dict):
-                return [k] + find_key(val,key)
+                key = find_key(val,key)
+                if isinstance(key,list):
+                    return [k] + key
     else:
         return [key]
     return None
@@ -107,7 +108,7 @@ def recursive_set(d : dict, key : list, val, as_hint = False):
     """
     if as_hint and key[0] not in d:
         temp_key = find_key(d, key[0])
-        if not isinstance(temp_key, None):
+        if isinstance(temp_key, list):
             key = temp_key + key[1:len(key)]
         recursive_set(d,key,val)
     else:
