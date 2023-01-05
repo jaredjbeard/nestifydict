@@ -13,7 +13,7 @@ sys.path.append(parent)
 
 from copy import deepcopy
 
-__all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set"]
+__all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set", "recursive_get"]
 
 def merge(d_default : dict, d_merge : dict):
     """
@@ -118,3 +118,17 @@ def recursive_set(d : dict, key : list, val, as_hint = False):
             recursive_set(d[key[0]], key[1:len(key)], val)
         else:
             d[key[0]] = val
+            
+def recursive_get(d : dict, key : list):
+    """
+    Returns value from dict recursive key
+    
+    :param d: (dict) dictionary containing key
+    :param key: (list) list of keys
+    :return: () Value
+    """
+    if not isinstance(key,list):
+        return d[key]
+    if len(key) == 1:
+        return d[key[0]]
+    return recursive_get(d[key[0]],key[1:len(key)])

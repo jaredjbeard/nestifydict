@@ -52,3 +52,9 @@ recursive_set(a,a1akey,"hi")
 print("set a1a1 full key", a)
 recursive_set(a,["a1a"],"bye", True)
 print("set a1a1 as hint", a)
+
+## Test Recursive Get ----------------------------
+print("\n------ Recurcsive Get ------")
+
+
+print("get a1a1 full key", a1akey, " -> ", recursive_get(a,a1akey))
