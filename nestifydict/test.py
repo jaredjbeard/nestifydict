@@ -18,6 +18,21 @@ print("b <- a", merge(b,a))
 print("c <- b", merge(c,b))
 print("c <- a", merge(c,a))
 
+## Test Merge w/ Append---------------------------
+#Test with merge list, set, and dict
+
+d = {"a": 1, "b": [1,2,3]}
+e = {"a": 1, "b": [4,5]}
+f = {"a": 1, "b": (4,5)}
+g = {"a": 1, "b": {"c":1}}
+print("d", d)
+print("e", e)
+print("f", f)
+print("g", g)
+print("d <- e", merge(d,e))
+print("d <- f", merge(d,f))
+print("d <- g", merge(d,g))
+
 ## Test Unstructure ------------------------------
 print("\n------ Unstructure ------")
 

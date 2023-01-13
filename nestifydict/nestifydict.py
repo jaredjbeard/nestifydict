@@ -11,11 +11,12 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 
+from collections.abc import Iterable
 from copy import deepcopy
 
 __all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set", "recursive_get"]
 
-def merge(d_default : dict, d_merge : dict, do_append = False):
+def merge(d_default : dict, d_merge : dict, do_append : bool = False):
     """
     Adds d_merge values to d_default recursively. 
     Values in d_merge overwrite those of d_default values, 
@@ -29,10 +30,16 @@ def merge(d_default : dict, d_merge : dict, do_append = False):
     """
     d_default = deepcopy(d_default)
     for key in d_merge:
-        if key not in d_default or not (isinstance(d_merge[key], dict) and isinstance(d_default[key], dict)):
+        if key not in d_default: 
             d_default[key] = deepcopy(d_merge[key])
         else:
-            d_default[key] = merge(d_default[key], d_merge[key], do_append)
+            if isinstance(d_default[key],dict) and isinstance(d_merge[key],dict):
+                d_default[key] = merge(d_default[key], d_merge[key], do_append)
+            elif isinstance(d_merge[key], Iterable) and type(d_default[key]) == type(d_merge[key]):
+                d_default[key] += d_merge[key]
+            else:
+                d_default[key] = deepcopy(d_merge[key])
+
     return d_default
     
 def unstructure(d):
