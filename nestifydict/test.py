@@ -32,6 +32,7 @@ print("g", g)
 print("d <- e", merge(d,e))
 print("d <- f", merge(d,f))
 print("d <- g", merge(d,g))
+print("f <- f", merge(f,f))
 
 ## Test Unstructure ------------------------------
 print("\n------ Unstructure ------")
