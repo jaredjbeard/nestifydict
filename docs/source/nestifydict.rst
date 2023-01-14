@@ -12,6 +12,14 @@ NestifyDict
    :undoc-members:
    :show-inheritance:
 
+Datasets
+--------
+
+.. automodule:: nestifydict.datasets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
