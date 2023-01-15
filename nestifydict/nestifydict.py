@@ -106,9 +106,30 @@ def find_key(d : dict, key):
         return [key]
     return None
 
-def list_keys(keys : list):
+def find_all_keys(d : dict, key):
     """
-    Given a key of keys, will expand each to list of keys
+    Finds all instances of key in nested dict
+    
+    :param d: (dict) dictionary to search
+    :param key: () key
+    :return: (list) Returns list of keys
+    """
+    keys = []
+    for k in d:
+        if k == key:
+            keys.append(key)
+        else:
+            if isinstance(d[k], dict):
+                temp_keys = find_all_keys(d[k],key)
+                for el in temp_keys:
+                    keys.append(k + el)
+    return keys
+
+def expand_keys(keys : list):
+    """
+    Given a key where some elements are shared, expands to a list of keys.
+    
+    For example [var1, [var2, var3]] would become the keys [var1, var2] and [var1, var3].
     
     :param key: (list) compressed keys
     :return: (list) listed keys
@@ -120,7 +141,7 @@ def recursive_set(d : dict, key : list, val, as_hint = False):
     Updates dictionary value given an ordered list of keys.
     Can also support keys as hints and will search for the *first* key before attempting to set it.
     (Later may update find_key to match a list of keys or make a find_key_list function)
-    In either case, if key is not found it will be added to root
+    In either case, if key is not found it will be added to root.
     
     :param d: (dict) dictionary to update
     :param key: (list) list of keys
