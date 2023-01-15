@@ -16,6 +16,8 @@ sys.path.append(parent)
 from collections.abc import Iterable
 from copy import deepcopy
 
+import itertools
+
 __all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set", "recursive_get"]
 
 def merge(d_default : dict, d_merge : dict, do_append : bool = False):
@@ -104,27 +106,14 @@ def find_key(d : dict, key):
         return [key]
     return None
 
-def list_keys(d : dict, key):
+def list_keys(keys : list):
     """
     Given a key of keys, will expand each to list of keys
     
-    :param d: (dict) dictionary to search
-    :param key: (list) key
+    :param key: (list) compressed keys
+    :return: (list) listed keys
     """
-    keys = []
-    for el in key:
-        temp = []
-        if isinstance(el, list):
-            for itm in el:
-                subkeys = list_keys(d[el], itm)
-                if subkeys is not None:
-                    temp.append(subkeys)
-        else:
-            temp = [el]
-        
-        #itertools product
-        # add elements
-    return keys
+    return list(itertools.product(*keys)) 
     
 def recursive_set(d : dict, key : list, val, as_hint = False):
     """
