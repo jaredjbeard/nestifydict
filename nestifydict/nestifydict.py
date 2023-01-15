@@ -7,6 +7,8 @@ __author__ = "Jared Beard"
 
 import sys
 import os
+
+from traitlets import dlink
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
@@ -101,6 +103,28 @@ def find_key(d : dict, key):
     else:
         return [key]
     return None
+
+def list_keys(d : dict, key):
+    """
+    Given a key of keys, will expand each to list of keys
+    
+    :param d: (dict) dictionary to search
+    :param key: (list) key
+    """
+    keys = []
+    for el in key:
+        temp = []
+        if isinstance(el, list):
+            for itm in el:
+                subkeys = list_keys(d[el], itm)
+                if subkeys is not None:
+                    temp.append(subkeys)
+        else:
+            temp = [el]
+        
+        #itertools product
+        # add elements
+    return keys
     
 def recursive_set(d : dict, key : list, val, as_hint = False):
     """
