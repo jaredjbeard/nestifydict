@@ -1,7 +1,6 @@
 # nestifydict
 
 [![Downloads](https://static.pepy.tech/badge/nestifydict)](https://pepy.tech/project/nestifydict)
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q1HXPSL)
 
 A tool for parsing structured data (primarily nested dictionaries from json files). In particular it can flatten dictionaries, map flattened dicts to a template, and recursively get/set elements in nested dictionaries without a priori knowledge of the structure.
 
