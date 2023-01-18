@@ -18,7 +18,7 @@ from copy import deepcopy
 
 import itertools
 
-__all__ = ["merge", "unstructure", "structure", "find_key", "recursive_set", "recursive_get"]
+__all__ = ["merge", "merge_all", "unstructure", "structure", "find_key", "recursive_set", "recursive_get"]
 
 def merge(d_default : dict, d_merge : dict, do_append : bool = False):
     """
@@ -45,6 +45,20 @@ def merge(d_default : dict, d_merge : dict, do_append : bool = False):
                 d_default[key] = deepcopy(d_merge[key])
 
     return d_default
+
+def merge_all(configs : list, do_append : bool = False):
+    """
+    Accepts a list of configurations and merges them into a single one
+
+    :param configs: (list(dict)) Configs to merge, if priority matters, later defaults in each group will overwrite earlier ones.
+    :param do_append: (bool) if true, will append iterable elements of not dict type, *default*: Flase
+    :return: merged configuration
+    """
+    merged_config = {}
+    for c in configs:
+        merged_config = merge(merged_config,c,do_append)
+    return merged_config
+
     
 def unstructure(d):
     """
