@@ -4,7 +4,7 @@
 
 A tool for parsing structured data (primarily nested dictionaries from json files). In particular it can flatten dictionaries, map flattened dicts to a template, and recursively get/set elements in nested dictionaries without a priori knowledge of the structure.
 
-Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/), 
+Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/intro.html), 
 [Github source code](https://github.com/jaredjbeard/nestifydict), 
 and install from [PyPi](https://pypi.org/project/nestifydict/)
 
