@@ -6,7 +6,7 @@ A tool for parsing structured data (primarily nested dictionaries from json file
 
 Please see our [Documentation](https://nestifydict.readthedocs.io/en/latest/intro.html), 
 [Github source code](https://github.com/jaredjbeard/nestifydict), 
-and install from [PyPi](https://pypi.org/project/nestifydict/)
+and install from [PyPI](https://pypi.org/project/nestifydict/)
 
 Citation
 --------
