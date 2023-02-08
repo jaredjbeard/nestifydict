@@ -13,7 +13,7 @@ Citation
 If you are using this in your work, please cite as
 
 ```
-@misc{beard2022irl_gym,
+@misc{beard2022nestifydict,
     author = {Beard, Jared J.},
     title = {NestifyDict: A tool for parsing structured data},
     year = {2022},
